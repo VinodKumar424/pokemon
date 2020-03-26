@@ -4096,7 +4096,10 @@ PokemonObjectFromNum("025")
 
 PokemonObjectFromIdNameNum("1","Bulbasaur","001")
 
-// PokemonObjectFromNextEvolution("Ivysaur")
+PokemonObjectFromNextEvolution("002","Ivysaur")
+ 
+PokemonObjectFromWeaknesses("Ground")
+
 
 
 
@@ -4154,16 +4157,31 @@ function PokemonObjectFromName(PokemonName){
    }
  }
  
-//  function PokemonObjectFromNextEvolution(PokemonName){
-//    for( var m=0; m<PokemonObject.length; m++)
-//    {
-//      console.log(PokemonObject[m]);
-//      for(var n=0; n<PokemonObject[m].NextEvolution; n++)
-//      {
-//        if(PokemonObject[m].NextEvolution[n]==PokemonName)
-//        {
-//          console.log(PokemonObject[n]);
-//        }
-//      }
-//    }
-//  }
+ 
+
+function PokemonObjectFromNextEvolution(PokemonNum,PokemonName){
+
+for( var m=0; m<PokemonObject.length; m++)
+    {
+    // console.log(PokemonObject[m].next_evolution.length);
+    if("next_evolution" in PokemonObject[m]){
+      for(var n=0; n<PokemonObject[m].next_evolution.length; n++)
+      {
+        if(PokemonObject[m].next_evolution[n].num == PokemonNum && PokemonObject[m].next_evolution[n].name == PokemonName)
+        {
+          console.log(PokemonObject[m]);
+        }
+      }
+    }
+  }
+}
+    
+function PokemonObjectFromWeaknesses(PokemonWeaknesses){
+  for(var o=0; o<PokemonObject.length; o++)
+  {
+    if(PokemonObject[o].weaknesses==PokemonWeaknesses)
+    {
+      console.log(PokemonObject[o]);
+    }
+  }
+}
